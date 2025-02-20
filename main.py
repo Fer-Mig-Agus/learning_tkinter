@@ -12,6 +12,17 @@ window.geometry('900x500')
 window.minsize(400,300)
 #Especificamos un tamaño maximo para la ventana
 window.maxsize(1000,600)
+#Coloco el icono que se va a mostrar en ventana
+window.iconbitmap('logo.ico')
+
+#Para el color de fondo de la ventana usamos
+window.configure(bg='deep sky blue')
+
+#Para bloquear el tamaño de la pantalla
+window.resizable(False,False)
+
+#Para cambiar la opacidad
+window.attributes('-alpha',0.7)
 
 # Mantiene la ventana abierta
 window.mainloop()
