@@ -11,7 +11,7 @@ def abrir_archivo():
 
 
 def guardar_archivo():
-    file_path=filedialog.askopenfilename(filetypes=[('Archivos de texto','*.txt'),('Todos los archivos','*.*')])
+    file_path=filedialog.asksaveasfilename(filetypes=[('Archivos de texto','*.txt'),('Todos los archivos','*.*')])
     if file_path:
         with open(file_path,'w') as file_obj:
             contenido=text_widget.get(1.0,tk.END)
