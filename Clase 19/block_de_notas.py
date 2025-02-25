@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
+import os
+import sys
+
 
 #Funciones Call Back
 
@@ -32,6 +35,10 @@ def save_as_file():
                                                                              ('Archivos de python','*.py'),
                                                                              ('Todos los archivos','*.*'), ])
     if new_path:
+
+        if not os.path.splitext(new_path)[1]:
+            new_path += ".txt"
+
         with open(new_path, 'w', encoding='utf-8') as file:
             file.write(text_area.get(1.0, tk.END))
 
@@ -51,13 +58,21 @@ def show_menu_contextual(event):
     menu_contextual.tk_popup(event.x_root,event.y_root)
 
 
+
+# Obtiene la ruta correcta del archivo .ico
+def obtener_ruta(relative_path):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    return os.path.join(os.path.abspath("."), relative_path)
+
+
 window=tk.Tk()
 window.title('Block de notas - MF Dev')
 window.geometry('800x600+500+200')
 window.minsize(400,300)
 window.maxsize(1000,600)
-
-window.iconbitmap('logo.ico')
+window.iconbitmap(obtener_ruta("logo.ico"))
+#window.iconbitmap('logo.ico')
 
 file_path= ''
 
